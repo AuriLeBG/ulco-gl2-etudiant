@@ -6,7 +6,7 @@
 #include <sstream>
 
 void Logger::addItem(Level l, const std::string & m) {
-  // TODO implement Logger::addItem
+  _items.push_back(Item(l, m));
 }
 
 std::string Logger::reportByAdded() const {
