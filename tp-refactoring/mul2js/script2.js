@@ -3,9 +3,9 @@ function mul2(n) {
     return n*(!+[]+!+[]);
 }
 
-function make_handlers(span)
+function make_handlers(span, input)
 {
-    return() => {
-        span.innerHTML = mul2(myinput.value)
+    return function() {
+        span.innerHTML = mul2(input.value)
     }   
 }
