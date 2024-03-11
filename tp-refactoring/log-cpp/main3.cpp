@@ -29,7 +29,13 @@ int main() {
     std::cout << "this is log-cpp" << std::endl;
 
     Mycompute mc;
-    const int res = mc.mycompute(18);
+    const int res = mc.mycompute([](const std::string& str)
+    {
+        std::ofstream fs;
+    fs.open("test.txt");
+    fs << str;
+    fs.close();
+    }, 18);
     std::cout << res << std::endl;
 
     return 0;
