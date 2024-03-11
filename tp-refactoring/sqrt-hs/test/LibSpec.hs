@@ -12,4 +12,4 @@ spec =
     describe "mysqrt" $ do
         it "0" $ mysqrt 0 `shouldBe` 0
         it "1764" $ mysqrt 1764 `shouldBe` 42
-        -- it "(-1764)" $ mysqrt (-1764) `shouldBe` 42
+        -- it "(-1764)" $ mysqrt (-1764) `shouldBe` Nothing
