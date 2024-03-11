@@ -11,10 +11,17 @@
             <span id="myspan"></span>
         </div>
 
+        <div>
+            <button id="mybutton2">mul2</button>
+            <span id ="myspan2"></span>
+        </div>
+
         <script src="script2.js"></script>
 
         <script>
-            mybutton.onclick = handle;
+            mybutton.onclick = make_handlers(myspan);
+            mybutton2.onclick = make_handlers(myspan2);
+            
         </script>
 
     </body>
