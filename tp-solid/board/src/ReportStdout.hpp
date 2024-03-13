@@ -1,18 +1,13 @@
 
 #include <string>
-#include "Board.hpp"
-#include "Itemable.hpp"
+#include "Reportable.hpp"
 
 
-class ReportStdout
+class ReportStdout : public Reportable
 {
 public:
-    ReportStdout()
-    {
-
-    }
-
-    void reportStdout(Board board)
+    
+    void report(Board board)
     {
         for (const std::string & item : board.getItems())
             std::cout << item << std::endl;

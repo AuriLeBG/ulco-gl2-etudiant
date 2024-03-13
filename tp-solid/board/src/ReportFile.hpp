@@ -1,15 +1,14 @@
 #include <string>
-#include "Board.hpp"
-#include "Itemable.hpp"
+#include "Reportable.hpp"
 
 
-class ReportFile
+class ReportFile : public Reportable
 {
 public:
 
     ReportFile(std::string filename): _ofs(filename){}
 
-    void reportFile(Board board)
+    void report(Board board)
     {
         for (const std::string & item : board.getItems())
         _ofs << item << std::endl;
