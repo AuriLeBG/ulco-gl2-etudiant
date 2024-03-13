@@ -2,6 +2,7 @@
 #include "Board.hpp"
 #include "ReportStdout.hpp"
 #include "ReportFile.hpp"
+#include "NumBoard.hpp"
 
 void testBoard(Board & b) 
 {
@@ -16,7 +17,7 @@ void testBoard(Board & b)
 
 int main() 
 {
-    Board b1;
+    NumBoard b1;
     testBoard(b1);
     return 0;
 }
