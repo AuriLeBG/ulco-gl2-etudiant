@@ -106,3 +106,15 @@ void Jeu::raz()
         }
     }
 }
+
+void Jeu::CheckVictoire(Cell cell)
+{
+    for(int i = 0; i < 3; i++)
+    {
+        if((getCell(i, 0) == cell && getCell(i, 1) == cell && getCell(i, 2) == cell) ||
+            (getCell(0, i) == cell && getCell(0, i) == cell && getCell(0, i) == cell))
+        {
+
+        }
+    }
+}
