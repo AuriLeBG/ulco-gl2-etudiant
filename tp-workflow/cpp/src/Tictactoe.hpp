@@ -12,10 +12,12 @@ enum class Cell { Vide, Rouge, Vert };
 class Jeu {
     private:
         std::array<std::array<Cell, 3>, 3> _plateau;
-        
+        Status _currentStatus;
     private:
-        const std::string& getCellString(int i, int j) const;
+
         void changeStatus();
+        Cell getColorToPlay();
+        void SetCell(int i, int j, const Cell& cell);
 
     public:
         // Constructeur à utiliser.

@@ -1,20 +1,24 @@
 #include "Tictactoe.hpp"
 
-Jeu::Jeu() 
+Jeu::Jeu()
+    : _currentStatus(Status::RougeJoue)
 {
     raz();
 }
 
 Status Jeu::getStatus() const
 {
-    // TODO
-    return Status::RougeJoue;
+    return _currentStatus;
 }
 
 Cell Jeu::getCell(int i, int j) const 
 {
-    // TODO
-    return _plateau[j][i];
+    if(i < 3 && j < 3)
+    {
+        Cell cell = _plateau[j][i];
+        return cell;
+    }
+
 }
 
 std::ostream & operator<<(std::ostream & os, const Jeu & jeu)
@@ -47,15 +51,49 @@ std::ostream & operator<<(std::ostream & os, const Jeu & jeu)
     return os;
 }
 
+void Jeu::SetCell(int i, int j, const Cell& cell)
+{
+    if(i < 3 && j < 3)
+    {
+        _plateau[j][i] = cell;
+    }
+}
+
 bool Jeu::jouer(int i, int j) 
 {
-    // TODO
+    if(getCell(i, j) == Cell::Vide)
+    {
+        SetCell(i, j, getColorToPlay());
+        changeStatus();
+        return true;
+    }
     return false;
 }
 
+Cell Jeu::getColorToPlay()
+{
+    if(_currentStatus == Status::RougeJoue)
+    {
+        return Cell::Rouge;
+    }
+    else
+    {
+        return Cell::Vert;
+    }    
+}
+
+
+
 void Jeu::changeStatus()
 {
-    
+    if(_currentStatus == Status::RougeJoue)
+    {
+        _currentStatus = Status::VertJoue;
+    }
+    else if(_currentStatus == Status::VertJoue)
+    {
+        _currentStatus = Status::RougeJoue;
+    }
 }
 
 void Jeu::raz() 
