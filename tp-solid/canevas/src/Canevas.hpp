@@ -14,13 +14,7 @@ class Canevas {
         void ajouterDisque(int rayon);
         void ajouterRectangle(int largeur, int hauteur);
         double aireTotale() const;
-        void exportJSON(std::ostream & os, const std::string & what) const;
-        void exportYAML(std::ostream & os, const std::string & what) const;
-
-    private:
-        double aireForme(const Forme * f) const;
-        void exportFormeJSON(std::ostream & os, const Forme * f) const;
-        void exportFormeYAML(std::ostream & os, const Forme * f) const;
-
+        std::vector<Description> resume() const;
+        std::vector<Description> descriptions() const;
 };
 

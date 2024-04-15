@@ -14,7 +14,10 @@
         <script src="script1.js"></script>
 
         <script>
-            mybutton.onclick = handle;
+            mybutton.onclick = function()
+            {
+                myspan.innerHTML = mul2(myinput.value);
+            }
         </script>
 
     </body>

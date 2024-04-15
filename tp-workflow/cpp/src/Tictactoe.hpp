@@ -12,12 +12,17 @@ enum class Cell { Vide, Rouge, Vert };
 class Jeu {
     private:
         std::array<std::array<Cell, 3>, 3> _plateau;
-        // TODO
+        Status _currentStatus;
+    private:
+
+        void changeStatus();
+        Cell getColorToPlay();
+        void SetCell(int i, int j, const Cell& cell);
 
     public:
         // Constructeur à utiliser.
         Jeu();
-
+        
         // Retourne le status du jeu courant (Egalite, RougeGagne, VertGagne, RougeJoue, VertJoue).
         Status getStatus() const;
 
