@@ -30,12 +30,31 @@ TEST_CASE("Test setCase")
     REQUIRE(jeu.getCell(0, 0) == Cell::Vide);
 
     std::cout << jeu;
-
-
-
 }
 
+TEST_CASE("Test Victoire Rouge")
+{
+    Jeu jeu;
+    REQUIRE(jeu.jouer(2, 2));
+    REQUIRE(jeu.jouer(2, 1));
+    REQUIRE(jeu.jouer(1, 1));
+    REQUIRE_FALSE(jeu.jouer(1, 1));
+    REQUIRE(jeu.jouer(1, 2));
+    REQUIRE(jeu.jouer(0, 0));
+    REQUIRE(jeu.getStatus() == Status::RougeGagne);
+}
 
-    // TODO
+TEST_CASE("Test Victoire Vert")
+{
+    Jeu jeu;
+    REQUIRE(jeu.jouer(0, 1));
+    REQUIRE(jeu.jouer(2, 2));
+    REQUIRE(jeu.jouer(2, 1));
+    REQUIRE(jeu.jouer(1, 1));
+    REQUIRE_FALSE(jeu.jouer(1, 1));
+    REQUIRE(jeu.jouer(1, 2));
+    REQUIRE(jeu.jouer(0, 0));
+    REQUIRE(jeu.getStatus() == Status::VertGagne);
+}
 
 

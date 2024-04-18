@@ -19,7 +19,7 @@ class Jeu {
         Cell getColorToPlay();
         void SetCell(int i, int j, const Cell& cell);
 
-        void CheckVictoire(Cell cell);
+        bool CheckVictoire(Cell cell);
 
     public:
         // Constructeur à utiliser.

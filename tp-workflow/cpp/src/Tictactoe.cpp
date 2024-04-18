@@ -18,7 +18,7 @@ Cell Jeu::getCell(int i, int j) const
         Cell cell = _plateau[j][i];
         return cell;
     }
-
+    
 }
 
 std::ostream & operator<<(std::ostream & os, const Jeu & jeu)
@@ -86,6 +86,11 @@ Cell Jeu::getColorToPlay()
 
 void Jeu::changeStatus()
 {
+    if(CheckVictoire(getColorToPlay()))
+    {
+        return;
+    }
+
     if(_currentStatus == Status::RougeJoue)
     {
         _currentStatus = Status::VertJoue;
@@ -107,14 +112,25 @@ void Jeu::raz()
     }
 }
 
-void Jeu::CheckVictoire(Cell cell)
+bool Jeu::CheckVictoire(Cell cell)
 {
     for(int i = 0; i < 3; i++)
     {
         if((getCell(i, 0) == cell && getCell(i, 1) == cell && getCell(i, 2) == cell) ||
-            (getCell(0, i) == cell && getCell(0, i) == cell && getCell(0, i) == cell))
+            (getCell(0, i) == cell && getCell(0, i) == cell && getCell(0, i) == cell) ||
+            (getCell(0, 0) == cell && getCell(1, 1) == cell && getCell(2, 2) == cell) ||
+            (getCell(2, 0) == cell && getCell(1, 1) == cell && getCell(0, 2) == cell))
         {
-
+            if(cell == Cell::Rouge)
+            {
+                _currentStatus = Status::RougeGagne;
+            }
+            else if(cell == Cell::Vert)
+            {
+                _currentStatus = Status::VertGagne;
+            }
+            return true;
         }
     }
+    return false;
 }
