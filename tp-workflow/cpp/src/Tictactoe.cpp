@@ -18,7 +18,6 @@ Cell Jeu::getCell(int i, int j) const
         Cell cell = _plateau[j][i];
         return cell;
     }
-    
 }
 
 std::ostream & operator<<(std::ostream & os, const Jeu & jeu)
@@ -99,6 +98,7 @@ void Jeu::changeStatus()
     {
         _currentStatus = Status::RougeJoue;
     }
+    CheckEgalite();
 }
 
 void Jeu::raz() 
@@ -117,7 +117,7 @@ bool Jeu::CheckVictoire(Cell cell)
     for(int i = 0; i < 3; i++)
     {
         if((getCell(i, 0) == cell && getCell(i, 1) == cell && getCell(i, 2) == cell) ||
-            (getCell(0, i) == cell && getCell(0, i) == cell && getCell(0, i) == cell) ||
+            (getCell(0, i) == cell && getCell(1, i) == cell && getCell(2, i) == cell) ||
             (getCell(0, 0) == cell && getCell(1, 1) == cell && getCell(2, 2) == cell) ||
             (getCell(2, 0) == cell && getCell(1, 1) == cell && getCell(0, 2) == cell))
         {
@@ -131,6 +131,26 @@ bool Jeu::CheckVictoire(Cell cell)
             }
             return true;
         }
+    }
+    return false;
+}
+
+bool Jeu::CheckEgalite()
+{
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            if(_plateau[j][i] == Cell::Vide)
+            {
+                return false;
+            }
+        }
+    }
+    if(_currentStatus != Status::RougeGagne || _currentStatus != Status::VertGagne)
+    {
+        _currentStatus = Status::Egalite;
+        return true;
     }
     return false;
 }

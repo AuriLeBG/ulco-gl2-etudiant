@@ -15,11 +15,25 @@ class Jeu {
         Status _currentStatus;
     private:
 
+        //Update de la status de la partie
         void changeStatus();
+
+        //Retourne la coulour qui joue
         Cell getColorToPlay();
+
+        //Set une cellule de la grille 
+        // i ligne choisie (0, 1 ou 2)
+        // j colonne choisie (0, 1 ou 2)
+        // cell couleur a set  
         void SetCell(int i, int j, const Cell& cell);
 
+
+        //Regarde si la partie est gagnée pour une couleur
+        // cell Couleur pour laquelle on regarde si la partie est gagnée
+        // Renvoie true si la partie est gagnée, false sinon
         bool CheckVictoire(Cell cell);
+
+        bool CheckEgalite();
 
     public:
         // Constructeur à utiliser.

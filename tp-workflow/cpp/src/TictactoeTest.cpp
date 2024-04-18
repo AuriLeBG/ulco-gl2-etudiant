@@ -57,4 +57,28 @@ TEST_CASE("Test Victoire Vert")
     REQUIRE(jeu.getStatus() == Status::VertGagne);
 }
 
+TEST_CASE("Test Égalité")
+{
+    Jeu jeu;
+    REQUIRE(jeu.getStatus() == Status::RougeJoue);
+    REQUIRE(jeu.jouer(0, 0));
+    REQUIRE(jeu.getStatus() == Status::VertJoue);
+    REQUIRE(jeu.jouer(0, 1));
+    REQUIRE(jeu.getStatus() == Status::RougeJoue);
+    REQUIRE(jeu.jouer(0, 2));
+    REQUIRE(jeu.getStatus() == Status::VertJoue);
+    REQUIRE(jeu.jouer(1, 0));
+    REQUIRE(jeu.getStatus() == Status::RougeJoue);
+    REQUIRE(jeu.jouer(1, 2));
+    REQUIRE(jeu.getStatus() == Status::VertJoue);
+    REQUIRE(jeu.jouer(1, 1));
+    REQUIRE(jeu.getStatus() == Status::RougeJoue);
+    REQUIRE(jeu.jouer(2, 0));
+    REQUIRE(jeu.getStatus() == Status::VertJoue);
+    REQUIRE(jeu.jouer(2, 2));
+    REQUIRE(jeu.getStatus() == Status::RougeJoue);
+    REQUIRE(jeu.jouer(2, 1));
+    REQUIRE(jeu.getStatus() == Status::Egalite);
+}
+
 
