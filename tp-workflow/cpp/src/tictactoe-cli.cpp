@@ -4,14 +4,16 @@ using namespace std;
 
 int main()
 {
-
     Jeu jeu;
-    jeu.jouer(2, 2);
-    jeu.jouer(2, 1);
-    jeu.jouer(1, 1);
-    jeu.jouer(1, 1);
-
-
+    int x;
+    int y;
+    std::cout << "Saisir le coup" << std::endl;
+    std::cout << "x: ";
+    std::cin >> x;
+    std::cout << "y: ";
+    std::cin >> y;
+    jeu.jouer(x, y);
+ 
     std::cout << jeu;
     return 0;
 }
